@@ -77,7 +77,6 @@ public class signUpPage extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Users user = new Users(fName, lName, email);
                             FirebaseDatabase.getInstance().getReference()
-//                            FirebaseDatabase.getInstance().getReference("users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override

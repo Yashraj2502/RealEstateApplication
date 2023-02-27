@@ -125,26 +125,22 @@ public class MainActivity extends AppCompatActivity {
     } else if(menuItem.getItemId() == R.id.login) {
       startActivity(new Intent(this, loginPage.class));
     } else if(menuItem.getItemId() == R.id.logout) {
+//      FirebaseAuth.AuthStateListener state = new FirebaseAuth.AuthStateListener() {
+//        @Override
+//        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//          if (firebaseAuth.getCurrentUser() == null){
+//            Toast.makeText(MainActivity.this, "No Existing User Logged-In", Toast.LENGTH_SHORT).show();
+//          } else{ }
+//        }
+//      };
+//
+//      //Init and attach
+//      firebaseAuth = FirebaseAuth.getInstance();
+//      firebaseAuth.addAuthStateListener(state);
 
       //Call signOut()
       FirebaseAuth.getInstance().signOut();
-      Toast.makeText(MainActivity.this, "Successfully Loged-Out", Toast.LENGTH_LONG).show();
-
-      FirebaseAuth.AuthStateListener authStateListener = new FirebaseAuth.AuthStateListener() {
-        @Override
-        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-          if (firebaseAuth.getCurrentUser() == null){
-            //Do anything here which needs to be done after signout is complete
-            Toast.makeText(MainActivity.this, "No Existing User Signed-In", Toast.LENGTH_LONG).show();
-          }
-          else {
-          }
-        }
-      };
-
-      //Init and attach
-      firebaseAuth = FirebaseAuth.getInstance();
-      firebaseAuth.addAuthStateListener(authStateListener);
+      Toast.makeText(MainActivity.this, "Successfully Logged-Out", Toast.LENGTH_LONG).show();
     }
     return false;
   }
